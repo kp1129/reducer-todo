@@ -36,19 +36,6 @@ export const todoReducer = (state, action) => {
         }
       );
       return {...state, toDoItems: [...updatedToDo]};
-      // console.log("from the reducer", action.payload);
-      // let updatedToDo = { ...action.payload, completed: !action.payload.completed };
-      // console.log(updatedToDo);
-      // let newArr = [...state.toDoItems, updatedToDo];
-      // return { ...state, newArr };
-      // let updatedToDo = state.toDoItems.map(obj => {
-      //   if(obj.id === action.payload.id){
-      //     return {...obj, obj.completed: !obj.completed}
-      //   } else {
-      //   return obj;}
-      // })
-      // console.log(updatedToDo);
-      // return {...state, toDoItems: [...updatedToDo]}
 
     case "FILTER_COMPLETED":
       let filteredToDo = state.toDoItems.filter(obj => !obj.completed);

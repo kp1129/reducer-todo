@@ -9,8 +9,7 @@ const TodoForm = ({dispatch}) => {
     }
 
     return (
-        <div>
-        
+        <div>        
             <form onSubmit={handleSubmit}>
                 <input type='text' placeholder='new task goes here' onChange={(e) => setInputString(e.target.value)}/>
                 <button type='submit'>add task</button>

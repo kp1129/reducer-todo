@@ -11,8 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      <Title />
-    
+      <Title />    
       <TodoList dispatch={dispatch} data={state.toDoItems}/>
       <TodoForm dispatch={dispatch}/>
     </div>
