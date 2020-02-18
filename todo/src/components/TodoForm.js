@@ -14,6 +14,7 @@ const TodoForm = ({dispatch}) => {
             <form onSubmit={handleSubmit}>
                 <input type='text' placeholder='new task goes here' onChange={(e) => setInputString(e.target.value)}/>
                 <button type='submit'>add task</button>
+                <input type="button" value="clear" onClick={() => dispatch({type: "FILTER_COMPLETED"})}/>
             </form>
         </div>
     )

@@ -1,49 +1,61 @@
-export const initialState = {toDoItems: [{
-
-        item: 'Learn about reducers',
-        completed: false,
-        id: 3892987589
-      
-}, {
-
-    item: 'Learn about redux',
-    completed: false,
-    id: 3892987590
-  
-}, {
-
-    item: 'Learn about life in general',
-    completed: false,
-    id: 3892987591
-  
-}]}
+export const initialState = {
+  toDoItems: [
+    {
+      item: "Learn about reducers",
+      completed: false,
+      id: 3892987589
+    },
+    {
+      item: "Learn about redux",
+      completed: false,
+      id: 3892987590
+    }
+  ]
+};
 
 export const todoReducer = (state, action) => {
-  let newState;
-  switch(action.type){
-
-  case "ADD_TODO":
-    const newTodo = {
-      item: action.payload,
-      completed: false,
-      id: Date.now()
-    };
-    newState = { ...state, toDoItems: [...state.toDoItems, newTodo]};
-    break;
-
-  case "TOGGLE_COMPLETED":
-      const updatedToDo = {
-          item: action.payload.item,
-          completed: true,
-          id: action.payload.id
+  switch (action.type) {
+    case "ADD_TODO":
+      let newTodo = {
+        item: action.payload,
+        completed: false,
+        id: Date.now()
       };
-      newState = {...state, todoItems: [...state.todoItems, updatedToDo]};
-      break;
+      return { ...state, toDoItems: [...state.toDoItems, newTodo] };
+
+    case "TOGGLE_COMPLETED":
+      let updatedToDo = state.toDoItems.map(obj => {
+        if(obj.id === action.payload){
+          return {
+            item: obj.item,
+            completed: !obj.completed,
+            id: obj.id
+          }} else {
+            return obj;
+          }
+        }
+      );
+      return {...state, toDoItems: [...updatedToDo]};
+      // console.log("from the reducer", action.payload);
+      // let updatedToDo = { ...action.payload, completed: !action.payload.completed };
+      // console.log(updatedToDo);
+      // let newArr = [...state.toDoItems, updatedToDo];
+      // return { ...state, newArr };
+      // let updatedToDo = state.toDoItems.map(obj => {
+      //   if(obj.id === action.payload.id){
+      //     return {...obj, obj.completed: !obj.completed}
+      //   } else {
+      //   return obj;}
+      // })
+      // console.log(updatedToDo);
+      // return {...state, toDoItems: [...updatedToDo]}
+
+    case "FILTER_COMPLETED":
+      let filteredToDo = state.toDoItems.filter(obj => !obj.completed);
+      return {...state, toDoItems: [...filteredToDo]}  
+
     default:
-    newState = {...state}
-    break;
+      return state;
+
   }
-
-
-  return newState;
-}
+};

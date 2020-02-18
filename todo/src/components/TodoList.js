@@ -5,7 +5,7 @@ const TodoList = (props) => {
     return (
         <div>
            
-            {props.data.map(obj => <Todo data={obj} key={obj.id} onClick={() => {props.dispatch({type: "TOGGLE_COMPLETED", payload: {obj}})}}/>)}
+            {props.data.map(obj => <Todo data={obj} key={obj.id} dispatch={props.dispatch}/>)}
             
         </div>
     )
