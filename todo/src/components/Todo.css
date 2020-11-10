@@ -1,0 +1,9 @@
+.item {
+    border: 1px solid black;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.completed {
+    background: #22bb45;
+}
